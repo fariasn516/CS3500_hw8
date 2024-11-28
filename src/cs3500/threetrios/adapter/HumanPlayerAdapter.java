@@ -2,11 +2,22 @@ package cs3500.threetrios.adapter;
 
 import java.util.List;
 
+import cs3500.threetrios.model.Color;
+import cs3500.threetrios.model.Model;
+import cs3500.threetrios.model.ReadOnlyModel;
+import cs3500.threetrios.model.player.HumanPlayer;
+import cs3500.threetrios.model.player.Player;
 import cs3500.threetrios.provider.hw5.CardColor;
 import cs3500.threetrios.provider.hw5.ICard;
 import cs3500.threetrios.provider.hw5.IPlayer;
 
-public class HumanPlayerAdapter implements IPlayer {
+public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
+
+
+  public HumanPlayerAdapter(ReadOnlyModel model, Color color) {
+    super(model, color);
+  }
+
   @Override
   public String getName() {
     return "";
@@ -43,7 +54,7 @@ public class HumanPlayerAdapter implements IPlayer {
   }
 
   @Override
-  public CardColor getColor() {
+  public CardColor getColor2() {
     return null;
   }
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.provider.view.GameView;
 import cs3500.threetrios.provider.view.IViewFeature;
@@ -34,7 +35,6 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
     if (playerPerspective == null) {
       throw new IllegalArgumentException("Player perspective cannot be null");
     }
-
     this.frame = new GameView(model, playerPerspective);
     this.feature = new ViewFeature(frame);
     this.model = model;

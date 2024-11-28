@@ -1,15 +1,21 @@
 package cs3500.threetrios;
 
+import cs3500.threetrios.adapter.HumanPlayerAdapter;
+import cs3500.threetrios.adapter.ModelAdapter;
+import cs3500.threetrios.adapter.ViewAdapter;
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.controller.ThreeTriosPlayerController;
 import cs3500.threetrios.model.Color;
 import cs3500.threetrios.model.Model;
+import cs3500.threetrios.model.ReadOnlyModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.player.AIPlayer;
 import cs3500.threetrios.model.player.HumanPlayer;
 import cs3500.threetrios.model.player.Player;
+import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.strategy.CornerCardStrat;
 import cs3500.threetrios.strategy.MaxFlippedCardsStrat;
+import cs3500.threetrios.view.ThreeTriosFrameView;
 import cs3500.threetrios.view.ThreeTriosModelView;
 
 /**
@@ -61,5 +67,18 @@ public class Main {
     PlayerController controller2 = new ThreeTriosPlayerController(model, player2, viewPlayer2);
     controller2.startGame("configurationFiles/GridConfiguration/HasHoles",
             "configurationFiles/CardConfiguration/MaxCards", false);
+
+    ModelAdapter model2 = new ModelAdapter();
+
+    /**Player player3 = new HumanPlayerAdapter(model2, Color.RED);
+    Player player4 = new HumanPlayerAdapter(model2, Color.BLUE);
+    ThreeTriosFrameView viewPlayer3 = new ThreeTriosModelView(model2, Color.RED);
+    ThreeTriosFrameView viewPlayer4 = new ViewAdapter(model2, "BLUE");
+    PlayerController controller3 = new ThreeTriosPlayerController(model2, player3, viewPlayer3);
+    PlayerController controller4 = new ThreeTriosPlayerController(model2, player4, viewPlayer4);
+    controller2.startGame("configurationFiles/GridConfiguration/HasHoles",
+            "configurationFiles/CardConfiguration/MaxCards", false);
+    controller4.startGame("configurationFiles/GridConfiguration/HasHoles",
+            "configurationFiles/CardConfiguration/MaxCards", false);*/
   }
 }

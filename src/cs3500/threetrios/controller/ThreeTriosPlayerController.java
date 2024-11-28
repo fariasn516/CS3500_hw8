@@ -30,7 +30,7 @@ public class ThreeTriosPlayerController implements PlayerController {
    * @param player represents the player this controller is acting for
    * @param view represents the GUI view for this player
    */
-  public ThreeTriosPlayerController(Model model, Player player, ThreeTriosModelView view) {
+  public ThreeTriosPlayerController(Model model, Player player, ThreeTriosFrameView view) {
     if (model == null) {
       throw new IllegalArgumentException("Model cannot be null.");
     }

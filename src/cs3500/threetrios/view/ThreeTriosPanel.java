@@ -268,6 +268,8 @@ public class ThreeTriosPanel extends JPanel implements ThreeTriosPanelView {
         else if (index == yClick / (getHeight() / model.getRedPlayer().size())) {
           clickedAlready = true;
           index = -1;
+          features.onCardSelected(null);
+          clickedAlready = false;
         }
         else {
           index = yClick / (getHeight() / model.getRedPlayer().size());
@@ -282,6 +284,8 @@ public class ThreeTriosPanel extends JPanel implements ThreeTriosPanelView {
         else if (index == yClick / (getHeight() / model.getBluePlayer().size())) {
           clickedAlready = true;
           index = -1;
+          features.onCardSelected(null);
+          clickedAlready = false;
         }
         else if (index != yClick / (getHeight() / model.getBluePlayer().size()) && clickedAlready) {
           clickedAlready = false;

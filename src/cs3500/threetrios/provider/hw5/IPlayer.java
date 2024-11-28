@@ -75,11 +75,11 @@ public interface IPlayer {
   int getScore();
 
   /**
-   * Gets the player's corresponding color.
+   * Gets the player's corresponding color.  NOTE: Changed name
    *
    * @return The color of the player.
    */
-  public CardColor getColor();
+  public CardColor getColor2();
 
   /**
    * Add Card to hand.

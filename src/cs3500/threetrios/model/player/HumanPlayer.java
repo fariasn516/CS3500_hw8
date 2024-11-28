@@ -6,6 +6,7 @@ import java.util.List;
 import cs3500.threetrios.model.Card;
 import cs3500.threetrios.model.Color;
 import cs3500.threetrios.model.Model;
+import cs3500.threetrios.model.ReadOnlyModel;
 import cs3500.threetrios.view.PlayerAction;
 
 /**
@@ -38,7 +39,7 @@ public class HumanPlayer implements Player {
    * @param model represents the model to be played with
    * @param color represents the color of this player
    */
-  public HumanPlayer(Model model, Color color) {
+  public HumanPlayer(ReadOnlyModel model, Color color) {
     this.color = color;
     this.cardsInHand = new ArrayList<>();
     this.ownedCardsOnGrid = new ArrayList<>();
