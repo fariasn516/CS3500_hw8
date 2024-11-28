@@ -173,7 +173,6 @@ public class ThreeTriosModel implements Model, ReadOnlyModel, ModelStatus {
         continue;
       }
 
-
       Color adjCardColor = getCardOwnerColor(adjCard);
       if (adjCardColor != null && adjCardColor != sourceColor) {
         if (sourceCard.getValueFromDirection(direction)
