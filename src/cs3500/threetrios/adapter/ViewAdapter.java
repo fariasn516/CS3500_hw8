@@ -8,8 +8,6 @@ import javax.swing.JFrame;
 
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.provider.view.GameView;
-import cs3500.threetrios.provider.view.IViewFeature;
-import cs3500.threetrios.provider.view.ViewFeature;
 import cs3500.threetrios.view.PlayerAction;
 import cs3500.threetrios.view.ThreeTriosFrameView;
 
@@ -17,11 +15,12 @@ import cs3500.threetrios.view.ThreeTriosFrameView;
  *
  */
 public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
-  private final GameView frame;
-  private final IViewFeature feature;
+  private GameView frame;
   private final ReadOnlyTriosModel model;
+  private final String playerPerspective;
   private final List<PlayerAction> playerActions;
   private boolean gameOverMessageShown = false; // represents if the game over message is shown
+  private boolean justStarted = true;
 
   /**
    *
@@ -35,14 +34,18 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
     if (playerPerspective == null) {
       throw new IllegalArgumentException("Player perspective cannot be null");
     }
-    this.frame = new GameView(model, playerPerspective);
-    this.feature = new ViewFeature(frame);
     this.model = model;
+    this.playerPerspective = playerPerspective;
     this.playerActions = new ArrayList<>();
   }
 
   @Override
   public void refresh() {
+    if (justStarted && model.getCurrentTurnPlayer()!=null) {
+      this.frame = new GameView(this.model, this.playerPerspective);
+      justStarted = false;
+      this.frame.refresh();
+    }
     this.frame.refresh();
   }
 
@@ -53,7 +56,7 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
 
   @Override
   public void makeVisible() {
-    feature.setVisible(true);
+    this.frame.setVisible(true);
   }
 
   @Override

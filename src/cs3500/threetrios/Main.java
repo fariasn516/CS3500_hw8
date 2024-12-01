@@ -28,7 +28,7 @@ public class Main {
    * @param args represents a String of inputs from the console
    */
   public static void main(String[] args) {
-    Model model = new ThreeTriosModel();
+    /**Model model = new ThreeTriosModel();
     ThreeTriosModelView viewPlayer1 = new ThreeTriosModelView(model, Color.RED);
     ThreeTriosModelView viewPlayer2 = new ThreeTriosModelView(model, Color.BLUE);
 
@@ -66,19 +66,19 @@ public class Main {
             "configurationFiles/CardConfiguration/MaxCards", false);
     PlayerController controller2 = new ThreeTriosPlayerController(model, player2, viewPlayer2);
     controller2.startGame("configurationFiles/GridConfiguration/HasHoles",
-            "configurationFiles/CardConfiguration/MaxCards", false);
+            "configurationFiles/CardConfiguration/MaxCards", false);**/
 
     ModelAdapter model2 = new ModelAdapter();
 
-    /**Player player3 = new HumanPlayerAdapter(model2, Color.RED);
+    Player player3 = new HumanPlayerAdapter(model2, Color.RED);
     Player player4 = new HumanPlayerAdapter(model2, Color.BLUE);
     ThreeTriosFrameView viewPlayer3 = new ThreeTriosModelView(model2, Color.RED);
     ThreeTriosFrameView viewPlayer4 = new ViewAdapter(model2, "BLUE");
     PlayerController controller3 = new ThreeTriosPlayerController(model2, player3, viewPlayer3);
     PlayerController controller4 = new ThreeTriosPlayerController(model2, player4, viewPlayer4);
-    controller2.startGame("configurationFiles/GridConfiguration/HasHoles",
+    controller3.startGame("configurationFiles/GridConfiguration/HasHoles",
             "configurationFiles/CardConfiguration/MaxCards", false);
     controller4.startGame("configurationFiles/GridConfiguration/HasHoles",
-            "configurationFiles/CardConfiguration/MaxCards", false);*/
+            "configurationFiles/CardConfiguration/MaxCards", false);
   }
 }

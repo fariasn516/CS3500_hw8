@@ -2,6 +2,7 @@ package cs3500.threetrios.adapter;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +134,7 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public IPlayer getCurrentTurnPlayer() {
-    return null;
+    return new HumanPlayerAdapter(this, this.getCurrentPlayer().getColor());
   }
 
   @Override
@@ -176,6 +177,9 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public String displayPlayer() {
+    if (!hasStarted()) {
+      return "RED";
+    }
     return this.getCurrentPlayer().getColor().toString();
   }
 
