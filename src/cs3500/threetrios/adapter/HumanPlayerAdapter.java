@@ -1,5 +1,6 @@
 package cs3500.threetrios.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.threetrios.model.Color;
@@ -20,51 +21,67 @@ public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
 
   @Override
   public String getName() {
-    return "";
+    return this.getColor().toString();
   }
 
   @Override
   public void setHand(List<ICard> cards) throws IllegalArgumentException {
-
+    List<cs3500.threetrios.model.Card> cardList = new ArrayList<>();
+    for (ICard card : cards) {
+      this.addToHand(card);
+    }
   }
 
   @Override
   public List<ICard> getHand() {
-    return List.of();
+    List<ICard> icardList = new ArrayList<>();
+    for (ICard card : this.getCardsInHand()) {
+      icardList.add(card);
+    }
+    return icardList;
   }
 
   @Override
   public ICard chooseCard(int cardIndex) throws IllegalStateException {
-    return null;
+    return this.getCardsInHand().get(cardIndex);
   }
 
   @Override
   public int[] choosePosition(List<int[]> availablePositions) throws IllegalArgumentException, IllegalStateException {
-    return new int[0];
+    if (availablePositions.isEmpty()) {
+      throw new IllegalArgumentException("No available positions.");
+    }
+    return availablePositions.get(0);
   }
 
   @Override
   public void updateScore(int score) throws IllegalArgumentException {
-
+    if (score < 0) {
+      throw new IllegalArgumentException("Score cannot be negative.");
+    }
+    // implement
   }
 
   @Override
   public int getScore() {
-    return 0;
+    return this.getNumberCardsOwned();
   }
 
   @Override
   public CardColor getColor2() {
-    return null;
+    return this.getColor() == Color.RED ? CardColor.RED : CardColor.BLUE;
   }
 
   @Override
   public void addCard(ICard card) {
-
+    this.getCardsInHand().add(card);
   }
 
   @Override
   public void removeCard(int cardIndex) throws IllegalArgumentException {
-
+    if (cardIndex < 0 || cardIndex >= this.getCardsInHand().size()) {
+      throw new IllegalArgumentException("Invalid card index.");
+    }
+    this.getCardsInHand().remove(cardIndex);
   }
 }
