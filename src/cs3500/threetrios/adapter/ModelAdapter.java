@@ -45,17 +45,20 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public void switchPlayerTurn() {
-
+    if (this.getCurrentPlayer().getCardsInHand() == this.getBluePlayer()) {
+      // set current player to red
+    }
+    else{
+      // set to blue
+    }
   }
-
   @Override
   public void addListener(IController listener) {
-
   }
 
   @Override
   public void setThisAsListener() {
-
+    this.addListener(this);
   }
 
   @Override
@@ -65,7 +68,6 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public void notifyGameEnd(String message) {
-
   }
 
   @Override
@@ -97,12 +99,11 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public void endGame() throws IllegalStateException {
-
   }
 
   @Override
   public void switchTurn() {
-
+    switchPlayerTurn();
   }
 
   @Override
