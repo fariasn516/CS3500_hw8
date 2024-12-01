@@ -58,10 +58,13 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
 
   @Override
   public void showMessage(String message) {
-    if (this.model.isGameOver()) {
+    if (this.model.isGameOver() && !this.gameOverMessageShown) {
+      setGameOverMessageShown(true);
       this.frame.showEndMessage(message);
     }
-    this.frame.showErrorMessage(message);
+    else {
+      this.frame.showErrorMessage(message);
+    }
   }
 
   @Override
