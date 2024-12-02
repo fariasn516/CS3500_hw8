@@ -1,4 +1,4 @@
-package cs3500.threetrios.adapter;
+/**package cs3500.threetrios.adapter;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import cs3500.threetrios.provider.hw5.IGrid;
 /**
  *
  */
-public class GridAdapter extends GameGrid implements IGrid {
+/**public class GridAdapter extends GameGrid implements IGrid {
   int row;
   int col;
 
@@ -109,4 +109,4 @@ public class GridAdapter extends GameGrid implements IGrid {
   public int getFlippedCardsCount() {
     return 0;
   }
-}
+}*/
