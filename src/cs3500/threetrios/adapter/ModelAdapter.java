@@ -195,6 +195,7 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
         color = CardColor.BLUE;
       }
     }
+
     else {
       if (getCurrentPlayer().getColor().equals(Color.RED)) {
         color = CardColor.BLUE;
