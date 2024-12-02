@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
-import java.util.Arrays;
 
 import javax.swing.JPanel;
 
