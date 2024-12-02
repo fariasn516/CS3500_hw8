@@ -2,7 +2,6 @@ package cs3500.threetrios.adapter;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +9,7 @@ import java.util.Random;
 
 import cs3500.threetrios.model.Card;
 import cs3500.threetrios.model.CardFileParser;
+import cs3500.threetrios.model.Cell;
 import cs3500.threetrios.model.Color;
 import cs3500.threetrios.model.Grid;
 import cs3500.threetrios.model.GridFileParser;
@@ -42,7 +42,6 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
   public ModelAdapter(Random rand) {
     super(rand);
   }
-
 
   @Override
   public void switchPlayerTurn() {
@@ -166,7 +165,42 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
 
   @Override
   public ICard[][] getBoardState() {
-    return new ICard[0][];
+    Cell[][] cells = this.getGrid().getCells();
+    ICard[][] boardState = new ICard[cells.length][cells[0].length];
+    for (int row = 0; row < cells.length; row++) {
+      for (int col = 0; col < cells[row].length; col++) {
+        if (cells[row][col].hasCard()) {
+          boardState[row][col] = createICard(cells[row][col].getCard());
+        }
+      }
+    }
+    return boardState;
+  }
+
+  /**
+   *
+   * @param card
+   * @return
+   */
+  private ICard createICard(Card card) {
+    Map<Direction, Integer> values = new HashMap<>();
+    values.put(Direction.NORTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
+    values.put(Direction.SOUTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
+    values.put(Direction.EAST, card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
+    values.put(Direction.WEST, card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
+    CardColor color = CardColor.RED;
+    if (getCurrentPlayer().getOwnedCardsOnGrid().contains(card)
+            || getCurrentPlayer().getCardsInHand().contains(card)) {
+      if (getCurrentPlayer().getColor().equals(Color.BLUE)) {
+        color = CardColor.BLUE;
+      }
+    }
+    else {
+      if (getCurrentPlayer().getColor().equals(Color.RED)) {
+        color = CardColor.BLUE;
+      }
+    }
+    return new CardAdapter(card.getName(), color, values);
   }
 
   @Override
@@ -213,16 +247,7 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
   private List<ICard> getICards(List<Card> hand, CardColor color) {
     List<ICard> finalHand = new ArrayList<>();
     for (Card card : hand) {
-      Map<Direction, Integer> values = new HashMap<>();
-      values.put(Direction.NORTH,
-              card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
-      values.put(Direction.SOUTH,
-              card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
-      values.put(Direction.EAST,
-              card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
-      values.put(Direction.WEST,
-              card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
-      finalHand.add(new CardAdapter(card.getName(), color, values));
+      finalHand.add(createICard(card));
     }
     return finalHand;
   }
