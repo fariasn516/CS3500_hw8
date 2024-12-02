@@ -7,12 +7,10 @@ import java.util.Map;
 
 import cs3500.threetrios.model.Card;
 import cs3500.threetrios.model.Color;
-import cs3500.threetrios.model.Model;
 import cs3500.threetrios.model.ReadOnlyModel;
 import cs3500.threetrios.model.SimpleCard;
 import cs3500.threetrios.model.Value;
 import cs3500.threetrios.model.player.HumanPlayer;
-import cs3500.threetrios.model.player.Player;
 import cs3500.threetrios.provider.hw5.CardColor;
 import cs3500.threetrios.provider.hw5.Direction;
 import cs3500.threetrios.provider.hw5.ICard;

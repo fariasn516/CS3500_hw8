@@ -153,10 +153,10 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
     for (int row = 0; row < holeLayout.length; row++) {
       for (int col = 0; col < holeLayout[0].length; col++) {
         if (holeLayout[row][col]) {
-          board[row][col] = 0;
+          board[row][col] = -1;
         }
         else {
-          board[row][col] = -1;
+          board[row][col] = -0;
         }
       }
     }

@@ -19,7 +19,7 @@ import cs3500.threetrios.view.ThreeTriosModelView;
  */
 public class ThreeTriosPlayerController implements PlayerController {
   Model model; // represents the model where all the rules of ThreeTrios is being run
-  Player player; // represents the player that is playing the game
+  protected Player player; // represents the player that is playing the game
   ThreeTriosFrameView view; // represents the view that shows the game state as a GUI
   Card selectedCard; // represents the card that is currently selected
   boolean yourTurn; // represents whether it is this player's turn

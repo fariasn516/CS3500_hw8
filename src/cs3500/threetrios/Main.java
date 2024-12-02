@@ -1,5 +1,6 @@
 package cs3500.threetrios;
 
+import cs3500.threetrios.adapter.ControllerAdapter;
 import cs3500.threetrios.adapter.HumanPlayerAdapter;
 import cs3500.threetrios.adapter.ModelAdapter;
 import cs3500.threetrios.adapter.ViewAdapter;
@@ -75,7 +76,7 @@ public class Main {
     ThreeTriosFrameView viewPlayer3 = new ThreeTriosModelView(model2, Color.RED);
     ThreeTriosFrameView viewPlayer4 = new ViewAdapter(model2, "BLUE");
     PlayerController controller3 = new ThreeTriosPlayerController(model2, player3, viewPlayer3);
-    PlayerController controller4 = new ThreeTriosPlayerController(model2, player4, viewPlayer4);
+    PlayerController controller4 = new ControllerAdapter(model2, player4, viewPlayer4);
     controller3.startGame("configurationFiles/GridConfiguration/HasHoles",
             "configurationFiles/CardConfiguration/MaxCards", false);
     controller4.startGame("configurationFiles/GridConfiguration/HasHoles",

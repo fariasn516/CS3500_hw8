@@ -6,8 +6,10 @@ import java.util.List;
 import javax.swing.JFrame;
 
 
+import cs3500.threetrios.provider.controller.IController;
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.provider.view.GameView;
+import cs3500.threetrios.provider.view.ViewClickHandler;
 import cs3500.threetrios.view.PlayerAction;
 import cs3500.threetrios.view.ThreeTriosFrameView;
 
@@ -44,13 +46,18 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
     if (justStarted && model.getCurrentTurnPlayer()!=null) {
       this.frame = new GameView(this.model, this.playerPerspective);
       justStarted = false;
-      this.frame.refresh();
     }
     this.frame.refresh();
   }
 
   @Override
   public void addClickListener(PlayerAction listener) {
+    /////////NEED A WAY TO ADD LISTENER TO THE PROVIDED VIEW//////
+    System.err.println(listener instanceof IController);
+    if (listener instanceof IController && !justStarted) {
+      this.frame.addClickHandler((ViewClickHandler) listener);
+      System.err.println("listener added!");
+    }
     this.playerActions.add(listener);
   }
 
