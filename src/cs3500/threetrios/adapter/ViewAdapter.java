@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 
 import cs3500.threetrios.provider.controller.IController;
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
+import cs3500.threetrios.provider.view.BoardPanel;
+import cs3500.threetrios.provider.view.CardClickHandler;
+import cs3500.threetrios.provider.view.CellClickHandler;
 import cs3500.threetrios.provider.view.GameView;
+import cs3500.threetrios.provider.view.HandsPanel;
 import cs3500.threetrios.provider.view.ViewClickHandler;
 import cs3500.threetrios.view.PlayerAction;
 import cs3500.threetrios.view.ThreeTriosFrameView;
@@ -18,6 +22,9 @@ import cs3500.threetrios.view.ThreeTriosFrameView;
  */
 public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   private GameView frame;
+  private BoardPanel boardPanel;
+  private HandsPanel blueHandsPanel;
+  private HandsPanel redHandsPanel;
   private final ReadOnlyTriosModel model;
   private final String playerPerspective;
   private final List<PlayerAction> playerActions;
@@ -45,6 +52,9 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   public void refresh() {
     if (justStarted && model.getCurrentTurnPlayer()!=null) {
       this.frame = new GameView(this.model, this.playerPerspective);
+      this.boardPanel = this.frame.getBoardPanel();
+      this.blueHandsPanel = this.frame.getBlueHandPanel();
+      this.redHandsPanel = this.frame.getRedHandPanel();
       justStarted = false;
     }
     this.frame.refresh();
@@ -53,10 +63,14 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   @Override
   public void addClickListener(PlayerAction listener) {
     /////////NEED A WAY TO ADD LISTENER TO THE PROVIDED VIEW//////
-    System.err.println(listener instanceof IController);
+    if (frame == null || blueHandsPanel == null || redHandsPanel == null) {
+      System.out.println("One of the view components is null.");
+    }
+
     if (listener instanceof IController && !justStarted) {
-      this.frame.addClickHandler((ViewClickHandler) listener);
-      System.err.println("listener added!");
+      this.boardPanel.addCellClickHandler((CellClickHandler)listener);
+      this.blueHandsPanel.addCardClickHandler((CardClickHandler)listener);
+      this.redHandsPanel.addCardClickHandler((CardClickHandler)listener);
     }
     this.playerActions.add(listener);
   }

@@ -10,10 +10,13 @@ import cs3500.threetrios.provider.hw5.IGrid;
 import cs3500.threetrios.provider.hw5.IModel;
 import cs3500.threetrios.provider.hw5.IModelFeature;
 import cs3500.threetrios.provider.hw5.IPlayer;
+import cs3500.threetrios.provider.view.CardClickHandler;
+import cs3500.threetrios.provider.view.CellClickHandler;
+import cs3500.threetrios.provider.view.CellClickHandlerImpl;
 import cs3500.threetrios.provider.view.ViewClickHandler;
 import cs3500.threetrios.view.ThreeTriosFrameView;
 
-public class ControllerAdapter extends ThreeTriosPlayerController implements IController, ViewClickHandler {
+public class ControllerAdapter extends ThreeTriosPlayerController implements IController, ViewClickHandler, CardClickHandler, CellClickHandler {
   /**
    * Constructor for the controller, takes in the model, player, and view.
    *
@@ -72,5 +75,15 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void handleViewClick(int x, int y, String componentId) {
+  }
+
+  @Override
+  public void handleCardClick(int cardIndex) {
+    super.onCardSelected(player.getCardsInHand().get(cardIndex));  // Handle card click
+  }
+
+  @Override
+  public void handleCellClick(int row, int col) {
+    super.placeCard(row, col);
   }
 }
