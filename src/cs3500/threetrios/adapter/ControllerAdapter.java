@@ -72,6 +72,5 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void handleViewClick(int x, int y, String componentId) {
-
   }
 }
