@@ -1,4 +1,4 @@
-/**package cs3500.threetrios.adapter;
+package cs3500.threetrios.adapter;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,16 +15,11 @@ import cs3500.threetrios.provider.hw5.IGrid;
 /**
  *
  */
-/**public class GridAdapter extends GameGrid implements IGrid {
+public class GridAdapter implements IGrid {
   int row;
   int col;
 
-  public GridAdapter(int numRows, int numCols, boolean[][] holeLayout) {
-    super(numRows, numCols, holeLayout);
-  }
-
-  public GridAdapter(int numRows, int numCols, Cell[][] grid) {
-    super(numRows, numCols, grid);
+  public GridAdapter() {
   }
 
   @Override
@@ -74,16 +69,7 @@ import cs3500.threetrios.provider.hw5.IGrid;
 
   @Override
   public ICard[][] getBoardState() {
-    Cell[][] cells = this.getCells();
-    ICard[][] boardState = new ICard[cells.length][cells[0].length];
-    for (int row = 0; row < cells.length; row++) {
-      for (int col = 0; col < cells[row].length; col++) {
-        if (cells[row][col].hasCard()) {
-          boardState[row][col] = createICard(cells[row][col].getCard());
-        }
-      }
-    }
-    return boardState;
+    return new CardAdapter[0][];
   }
 
   private ICard createICard(Card card) {
@@ -109,4 +95,4 @@ import cs3500.threetrios.provider.hw5.IGrid;
   public int getFlippedCardsCount() {
     return 0;
   }
-}*/
+}

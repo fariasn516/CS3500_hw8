@@ -27,7 +27,7 @@ import cs3500.threetrios.provider.hw5.IPlayer;
  *
  */
 public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IModel {
-
+private List<IController> listeners;
   /**
    *
    */
@@ -54,6 +54,7 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
   }
   @Override
   public void addListener(IController listener) {
+    listeners.add(listener);
   }
 
   @Override
@@ -64,6 +65,9 @@ public class ModelAdapter extends ThreeTriosModel implements IModelFeature, IMod
   @Override
   public void notifyListeners() {
     super.notifyStatus();
+    for (IController listener : listeners) {
+      listener.update();
+    }
   }
 
   @Override

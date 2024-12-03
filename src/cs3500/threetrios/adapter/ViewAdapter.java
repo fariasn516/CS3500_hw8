@@ -1,5 +1,6 @@
 package cs3500.threetrios.adapter;
 
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,9 @@ import cs3500.threetrios.provider.controller.IController;
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.provider.view.BoardPanel;
 import cs3500.threetrios.provider.view.CardClickHandler;
+import cs3500.threetrios.provider.view.CardClickHandlerImpl;
 import cs3500.threetrios.provider.view.CellClickHandler;
+import cs3500.threetrios.provider.view.CellClickHandlerImpl;
 import cs3500.threetrios.provider.view.GameView;
 import cs3500.threetrios.provider.view.HandsPanel;
 import cs3500.threetrios.provider.view.ViewClickHandler;
@@ -63,16 +66,23 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   @Override
   public void addClickListener(PlayerAction listener) {
     /////////NEED A WAY TO ADD LISTENER TO THE PROVIDED VIEW//////
-    if (frame == null || blueHandsPanel == null || redHandsPanel == null) {
+    if (frame == null) {
       System.out.println("One of the view components is null.");
     }
-
-    if (listener instanceof IController && !justStarted) {
-      this.boardPanel.addCellClickHandler((CellClickHandler)listener);
-      this.blueHandsPanel.addCardClickHandler((CardClickHandler)listener);
-      this.redHandsPanel.addCardClickHandler((CardClickHandler)listener);
-    }
     this.playerActions.add(listener);
+  }
+
+  public void addProviderListener(ViewClickHandler handler, IController controller) {
+    System.err.println("provider listener being added");
+
+    this.frame.addClickHandler(handler);
+    this.frame.getViewFeature().addListener(controller);
+    this.boardPanel = this.frame.getBoardPanel();
+    this.boardPanel.addCellClickHandler(new CellClickHandlerImpl(this.boardPanel));
+    this.blueHandsPanel = this.frame.getBlueHandPanel();
+    this.blueHandsPanel.addCardClickHandler(new CardClickHandlerImpl(this.blueHandsPanel));
+    this.redHandsPanel = this.frame.getRedHandPanel();
+    this.redHandsPanel.addCardClickHandler(new CardClickHandlerImpl(this.redHandsPanel));
   }
 
   @Override

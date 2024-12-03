@@ -1,5 +1,7 @@
 package cs3500.threetrios.adapter;
 
+import java.awt.event.ComponentAdapter;
+
 import javax.swing.text.View;
 
 import cs3500.threetrios.controller.ThreeTriosPlayerController;
@@ -17,6 +19,9 @@ import cs3500.threetrios.provider.view.ViewClickHandler;
 import cs3500.threetrios.view.ThreeTriosFrameView;
 
 public class ControllerAdapter extends ThreeTriosPlayerController implements IController, ViewClickHandler, CardClickHandler, CellClickHandler {
+  ViewAdapter viewAdapter;
+  boolean listenerAdded = false;
+
   /**
    * Constructor for the controller, takes in the model, player, and view.
    *
@@ -24,18 +29,24 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
    * @param player represents the player this controller is acting for
    * @param view   represents the GUI view for this player
    */
-  public ControllerAdapter(Model model, Player player, ThreeTriosFrameView view) {
+  public ControllerAdapter(Model model, Player player, ViewAdapter view) {
     super(model, player, view);
+    this.viewAdapter = view;
   }
 
   @Override
   public void playGame(String cardPath, String boardPath, IModel model, IGrid grid) {
     super.startGame(boardPath, cardPath, false);
+    viewAdapter.addProviderListener(this, this);
   }
 
   @Override
   public void update() {
-
+    System.err.println("update");
+    if (!listenerAdded) {
+      viewAdapter.addProviderListener(this, this);
+      listenerAdded = true;
+    }
   }
 
   @Override
@@ -45,7 +56,7 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void selectCard(int handIndex) {
-    super.onCardSelected(player.getCardsInHand().get(handIndex));
+    super.onCardSelected(model.getCurrentPlayer().getCardsInHand().get(handIndex));
   }
 
   @Override
@@ -75,12 +86,14 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void handleViewClick(int x, int y, String componentId) {
+    System.err.println("handleViewClick");
   }
 
   @Override
   public void handleCardClick(int cardIndex) {
     super.onCardSelected(player.getCardsInHand().get(cardIndex));  // Handle card click
   }
+
   @Override
   public void handleCellClick(int row, int col) {
     super.placeCard(row, col);
