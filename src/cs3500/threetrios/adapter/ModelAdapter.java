@@ -192,19 +192,23 @@ private List<IController> listeners;
     values.put(Direction.SOUTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
     values.put(Direction.EAST, card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
     values.put(Direction.WEST, card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
-    CardColor color = CardColor.RED;
-    if (getCurrentPlayer().getOwnedCardsOnGrid().contains(card)
-            || getCurrentPlayer().getCardsInHand().contains(card)) {
-      if (getCurrentPlayer().getColor().equals(Color.BLUE)) {
-        color = CardColor.BLUE;
-      }
+
+    CardColor color= CardColor.BLUE;
+
+    System.out.println("Current Player: " + getCurrentPlayer().getColor());
+    System.out.println("Owned Cards: " + getCurrentPlayer().getOwnedCardsOnGrid());
+    System.out.println("Cards in Hand: " + getCurrentPlayer().getCardsInHand());
+    System.out.println("color " + getCardOwnerColor(card));
+
+
+    Color color1 = getCardOwnerColor(card);
+    if (color1 == null || color1 == Color.BLUE) {
+      color = CardColor.BLUE;
+    }
+    if (color1 == Color.RED) {
+      color = CardColor.RED;
     }
 
-    else {
-      if (getCurrentPlayer().getColor().equals(Color.RED)) {
-        color = CardColor.BLUE;
-      }
-    }
     return new CardAdapter(card.getName(), color, values);
   }
 
