@@ -50,20 +50,19 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     repaint();
   }
 
-  @Override
   public void addCellClickHandler(CellClickHandler handler) {
     this.addMouseListener(new java.awt.event.MouseAdapter() {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent e) {
-        int cellSize = getWidth() / cardsOnBoard.length;
-        int row = e.getY() / cellSize;
-        int col = e.getX() / cellSize;
+        int cellWidth = getWidth() / cardsOnBoard[0].length;
+        int cellHeight = getHeight() / cardsOnBoard.length;
+        int row = e.getY() / cellHeight;
+        int col = e.getX() / cellWidth;
         handler.handleCellClick(row, col);
         viewFeature.selectGridCell(row, col);
       }
     });
   }
-
 
   @Override
   protected void paintComponent(Graphics g) {
