@@ -195,12 +195,6 @@ private List<IController> listeners;
 
     CardColor color= CardColor.BLUE;
 
-    System.out.println("Current Player: " + getCurrentPlayer().getColor());
-    System.out.println("Owned Cards: " + getCurrentPlayer().getOwnedCardsOnGrid());
-    System.out.println("Cards in Hand: " + getCurrentPlayer().getCardsInHand());
-    System.out.println("color " + getCardOwnerColor(card));
-
-
     Color color1 = getCardOwnerColor(card);
     if (color1 == null || color1 == Color.BLUE) {
       color = CardColor.BLUE;

@@ -91,7 +91,7 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void handleCardClick(int cardIndex) {
-    super.onCardSelected(player.getCardsInHand().get(cardIndex));  // Handle card click
+    super.onCardSelected(player.getCardsInHand().get(cardIndex));
   }
 
   @Override
