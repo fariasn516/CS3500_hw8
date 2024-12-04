@@ -1,0 +1,27 @@
+In terms of our design/implementation there isn't much we wish we had done differently.
+We feel that we did pretty well in terms of decoupling and encapsulating our various
+designs/implementations. We never used concrete classes and always used interfaces and all of our
+fields were private/protected as needed. Additionally, we abstracted our code where we could and
+felt necessary, making our code a lot more readable. Furthermore, we used various enums to
+implement various necessary components of the game, including a Color enum, a Direction enum, and
+a Value enum. We felt these enums were necessary so that these fields are not checked at run time,
+but rather at creation, making it impossible for a client to create a game with incorrect
+colors/values/directions.
+
+We did learn quite a bit from the code that was given to us, namely how the other group implemented
+a lot of different listeners/click handlers in their code, compared to us where we only had one
+interface to be implemented to handle the clicking, which was the PlayerActions interface. We don't
+really agree with the way the group that gave us their code implemented it, as it wasn't intuitive,
+and some classes referred to concrete classes rather than interfaces sometimes. I feel that from
+the view given to us, we learned that how sometimes there is a possibility of over delegation and
+writing interfaces/classes that are too closely coupled together.
+
+Our customers never reached out to us after we sent them the code, so we are unsure as to how they
+fared with implementing things. However, we will take their silence as they were able to understand
+and implement the code that we had sent them.
+
+Our experience with our providers was okay. Sometimes, they would be a bit slow to respond, but
+they would always communicate/respond in the end. Additionally, they were willing to explain
+coherently what each one of their view interfaces did when we asked them for how things were
+actually linked together. All in all, I would say they were communicative and responded well when
+asked questions.

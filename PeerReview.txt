@@ -1,0 +1,38 @@
+The interfaces that we were given were decently flexible. They contained necessary methods to
+allow us to adapt them and the methods made sense for the most part.
+
+The views did indeed print out, properly and accordingly to their screenshot, however it was
+definitely not as intuitive as it could've been. In the group's GameView which implements their
+frame, they have a ViewFeature field, which is already implementing a concrete class rather than
+an interface. Normally, this wouldn't be that big of an issue, only that the ViewFeature class also
+had a GameView field for some reason. This took us a while to figure out as to why the provider
+decided to implement things this way.
+
+It wasn't that easy to reuse our provider's code. While adapting things such as the model and
+players were simple enough, it was a lot more difficult to adapt their view. One of the biggest
+things in adapting their view was how they would call refresh() within their GameView's (class that
+implements the frame) constructor. Since it was like this, every time we wanted to construct
+something, but not start the game quite yet, a null pointer exception would be thrown. Another
+thing was the amount of the number of click handlers they had. We don't believe that the amount of
+click handlers they had was necessary to implement, and it definitely threw us for a loop,
+especially when we were adding listeners/click handlers so that the code would work.
+
+Another thing was the way that their view's public methods would return mutable fields. In the
+beginning, the two of us could not understand why returning these mutable versions of fields was
+necessary. However, taking a closer look the multiple class/interfaces and how classes such as
+BoardPanel and HandsPanel both needed separate click handlers in order to function, it became
+clearer as to why these methods were necessary. We ended up using these methods in the ViewAdapter
+class to add click handlers to the necessary panels, allowing us to implement clicking. However,
+these methods definitely thew us for a loop and was a bit confusing to work with.
+
+Their code was decently documented, but there were certain aspects that could've been done better.
+We ended up having to ask them to give a rundown of their various interface/classes and how they
+worked. After given the rundown, however, we were able to implement a lot of necessary aspects.
+
+Overall, we didn't really need the other group to change their code. There were really two things
+that needed to be fixed:
+1) There was a bug in their view that made the assumption that grids would always be square,
+which caused there to be errors with indexing.
+2) They utilized a concrete class in one a method which we did not have access to, and needed
+for it to be changed.
+We reached out to the providers about both errors and got them fixed.
