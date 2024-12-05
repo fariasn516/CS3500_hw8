@@ -130,4 +130,11 @@ Changes Made in Part 3:
 
 Changes made in Part 4:
     Things we were able to get working:
-    Things we were not able to get working:
+        -Successfully adapted the player, card, model, controller, and view components.
+        -Implemented click handlers for the game view using the provided methods.
+        -Integrated the necessary methods for the view to correctly display the game state and
+        update the board.
+        -Resolved bugs related to grid assumptions (non-square grids) and fixed indexing errors.
+    Things We Were Not Able to Get Working:
+        -Provider's view bug which causes highlighting a selected card to not work properly. Due to
+        timing constraints, it was not possible to request a fix.
