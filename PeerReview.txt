@@ -36,3 +36,7 @@ which caused there to be errors with indexing.
 2) They utilized a concrete class in one a method which we did not have access to, and needed
 for it to be changed.
 We reached out to the providers about both errors and got them fixed.
+
+Another bug we discovered later was that their view did not clearly highlight a selected card
+in a player's hand. This feature only worked when it was not their turn. We felt that asking them
+to fix this at the last minute would be unfair, given the timing, so we did not request a fix.
