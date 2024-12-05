@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CS3500_hw8:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CS3500_hw8_jar</output-path>
+    <root id="archive" name="CS3500_hw8.jar">
+      <element id="module-output" name="CS3500_hw8" />
+      <element id="module-output" name="CodeExchange" />
+      <element id="library" level="project" name="CS3500_hw7" />
+    </root>
+  </artifact>
+</component>
