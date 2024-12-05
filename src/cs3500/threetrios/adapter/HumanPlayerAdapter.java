@@ -16,6 +16,9 @@ import cs3500.threetrios.provider.hw5.Direction;
 import cs3500.threetrios.provider.hw5.ICard;
 import cs3500.threetrios.provider.hw5.IPlayer;
 
+/**
+ * Adapter class that allows a HumanPlayer to be conformed to the IPlayer Interface.
+ */
 public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
 
   public HumanPlayerAdapter(ReadOnlyModel model, Color color) {
@@ -47,16 +50,21 @@ public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
   }
 
   /**
+   * Creates a map of directions to their corresponding values for the given card.
    *
-   * @param card
-   * @return
+   * @param card the Card object to extract values from
+   * @return a map mapping each direction (NORTH, SOUTH, EAST, WEST) to the corresponding value
    */
   private Map<Direction, Integer> createICardMap(Card card) {
     Map<Direction, Integer> values = new HashMap<>();
-    values.put(Direction.NORTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
-    values.put(Direction.SOUTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
-    values.put(Direction.EAST, card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
-    values.put(Direction.WEST, card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
+    values.put(Direction.NORTH,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
+    values.put(Direction.SOUTH,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
+    values.put(Direction.EAST,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
+    values.put(Direction.WEST,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
     return values;
   }
 
@@ -68,7 +76,8 @@ public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
   }
 
   @Override
-  public int[] choosePosition(List<int[]> availablePositions) throws IllegalArgumentException, IllegalStateException {
+  public int[] choosePosition(List<int[]> availablePositions)
+          throws IllegalArgumentException, IllegalStateException {
     if (availablePositions.isEmpty()) {
       throw new IllegalArgumentException("No available positions.");
     }
@@ -99,9 +108,11 @@ public class HumanPlayerAdapter extends HumanPlayer implements IPlayer {
   }
 
   /**
+   * Generates a Card object from the given ICard by mapping its direction values
+   * to the corresponding model directions and values.
    *
-   * @param card
-   * @return
+   * @param card the ICard object to convert
+   * @return a new Card object with the corresponding direction-value mappings
    */
   private Card generateCardFromICard(ICard card) {
     Map<cs3500.threetrios.model.Direction, Value> values = new HashMap<>();

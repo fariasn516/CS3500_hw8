@@ -17,6 +17,9 @@ import cs3500.threetrios.provider.hw5.ICard;
 import cs3500.threetrios.provider.hw5.IPlayer;
 import cs3500.threetrios.strategy.GameStrategy;
 
+/**
+ * Adapter class that allows an AIPlayer to be conformed to the IPlayer interface.
+ */
 public class AIPlayerAdapter extends AIPlayer implements IPlayer {
   /**
    * Constructor for the AI player, takes in a model to be played with, a color representing the
@@ -38,9 +41,10 @@ public class AIPlayerAdapter extends AIPlayer implements IPlayer {
   @Override
   public void setHand(List<ICard> cards) throws IllegalArgumentException {
     for (ICard card : cards) {
-        this.addToHand(generateCardFromICard(card));
+      this.addToHand(generateCardFromICard(card));
     }
   }
+
   private Card generateCardFromICard(ICard card) {
     Map<Direction, Value> values = new HashMap<>();
     for (Value val : Value.values()) {
@@ -73,10 +77,14 @@ public class AIPlayerAdapter extends AIPlayer implements IPlayer {
 
   private Map<cs3500.threetrios.provider.hw5.Direction, Integer> createICardMap(Card card) {
     Map<cs3500.threetrios.provider.hw5.Direction, Integer> values = new HashMap<>();
-    values.put(cs3500.threetrios.provider.hw5.Direction.NORTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
-    values.put(cs3500.threetrios.provider.hw5.Direction.SOUTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
-    values.put(cs3500.threetrios.provider.hw5.Direction.EAST, card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
-    values.put(cs3500.threetrios.provider.hw5.Direction.WEST, card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
+    values.put(cs3500.threetrios.provider.hw5.Direction.NORTH,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
+    values.put(cs3500.threetrios.provider.hw5.Direction.SOUTH,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
+    values.put(cs3500.threetrios.provider.hw5.Direction.EAST,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
+    values.put(cs3500.threetrios.provider.hw5.Direction.WEST,
+            card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
     return values;
   }
 
@@ -88,13 +96,14 @@ public class AIPlayerAdapter extends AIPlayer implements IPlayer {
   }
 
   @Override
-  public int[] choosePosition(List<int[]> availablePositions) throws IllegalArgumentException, IllegalStateException {
+  public int[] choosePosition(List<int[]> availablePositions)
+          throws IllegalArgumentException, IllegalStateException {
     return new int[0];
   }
 
   @Override
   public void updateScore(int score) throws IllegalArgumentException {
-
+    // not needed
   }
 
   @Override

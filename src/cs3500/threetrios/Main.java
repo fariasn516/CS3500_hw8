@@ -23,6 +23,13 @@ public class Main {
 
   /**
    * Method where the game can be run.
+   * The command-line arguments specify the type of players and their strategies:
+   * The first argument specifies the first player (Player 1), and the
+   * second argument specifies the second player (Player 2).
+   * For each player, specify:
+   *  - "human": A human-controlled player.
+   *  - "strategy1": An AI player using the "Max Cards Flipped" strategy.
+   *  - "strategy2": An AI player using the "Corner" strategy
    * @param args represents a String of inputs from the console
    */
   public static void main(String[] args) {

@@ -7,7 +7,7 @@ import cs3500.threetrios.provider.hw5.Direction;
 import cs3500.threetrios.provider.hw5.ICard;
 
 /**
- *
+ * Adapter class that allows a GameCard to be conformed to the ICard interface.
  */
 public class CardAdapter implements ICard {
   private CardColor color;
@@ -15,9 +15,13 @@ public class CardAdapter implements ICard {
   private final Map<Direction, Integer> values;
 
   /**
-   * @param name
-   * @param color
-   * @param values
+   * Constructs a CardAdapter with the specified name, color, and values.
+   * Validates that none of the parameters are null and that all directions are accounted for.
+   *
+   * @param name the name of the card
+   * @param color the color of the card, represented as a CardColor
+   * @param values a map of directions to their corresponding values
+   * @throws IllegalArgumentException if any parameter is null
    */
   public CardAdapter(String name, CardColor color, Map<Direction, Integer> values) {
     if (name == null) {

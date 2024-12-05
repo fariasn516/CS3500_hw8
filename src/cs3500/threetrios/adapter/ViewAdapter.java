@@ -1,18 +1,12 @@
 package cs3500.threetrios.adapter;
 
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JFrame;
-
-
 import cs3500.threetrios.provider.controller.IController;
 import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.provider.view.BoardPanel;
-import cs3500.threetrios.provider.view.CardClickHandler;
 import cs3500.threetrios.provider.view.CardClickHandlerImpl;
-import cs3500.threetrios.provider.view.CellClickHandler;
 import cs3500.threetrios.provider.view.CellClickHandlerImpl;
 import cs3500.threetrios.provider.view.GameView;
 import cs3500.threetrios.provider.view.HandsPanel;
@@ -21,7 +15,7 @@ import cs3500.threetrios.view.PlayerAction;
 import cs3500.threetrios.view.ThreeTriosFrameView;
 
 /**
- *
+ * Adapter class that allows a ThreeTriosFrameView to be conformed to the Provider's View.
  */
 public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   private GameView frame;
@@ -35,9 +29,14 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
   private boolean justStarted = true;
 
   /**
+   * Constructs a ViewAdapter with the given model and player perspective.
+   * Initializes the view with the specified model and player perspective, and prepares a list
+   * to store player actions.
    *
-   * @param model
-   * @param playerPerspective
+   * @param model the ReadOnlyTriosModel representing the game state
+   * @param playerPerspective the perspective of the player viewing the game (e.g.,
+   *                          "Player 1" or "Player 2")
+   * @throws IllegalArgumentException if either model or playerPerspective is null
    */
   public ViewAdapter(ReadOnlyTriosModel model, String playerPerspective) {
     if (model == null) {
@@ -53,7 +52,7 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
 
   @Override
   public void refresh() {
-    if (justStarted && model.getCurrentTurnPlayer()!=null) {
+    if (justStarted && model.getCurrentTurnPlayer() != null) {
       this.frame = new GameView(this.model, this.playerPerspective);
       this.boardPanel = this.frame.getBoardPanel();
       this.blueHandsPanel = this.frame.getBlueHandPanel();
@@ -72,6 +71,13 @@ public class ViewAdapter extends JFrame implements ThreeTriosFrameView {
     this.playerActions.add(listener);
   }
 
+  /**
+   * Adds event listeners to the provider components for handling user interactions.
+   * Sets up click handlers for the game frame, board panel, and player hands.
+   *
+   * @param handler the ViewClickHandler to handle click events on the game view
+   * @param controller the IController instance to listen for controller events
+   */
   public void addProviderListener(ViewClickHandler handler, IController controller) {
     System.err.println("provider listener being added");
 

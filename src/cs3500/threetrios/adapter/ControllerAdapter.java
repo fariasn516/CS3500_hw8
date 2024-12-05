@@ -1,9 +1,5 @@
 package cs3500.threetrios.adapter;
 
-import java.awt.event.ComponentAdapter;
-
-import javax.swing.text.View;
-
 import cs3500.threetrios.controller.ThreeTriosPlayerController;
 import cs3500.threetrios.model.Model;
 import cs3500.threetrios.model.player.Player;
@@ -14,11 +10,14 @@ import cs3500.threetrios.provider.hw5.IModelFeature;
 import cs3500.threetrios.provider.hw5.IPlayer;
 import cs3500.threetrios.provider.view.CardClickHandler;
 import cs3500.threetrios.provider.view.CellClickHandler;
-import cs3500.threetrios.provider.view.CellClickHandlerImpl;
 import cs3500.threetrios.provider.view.ViewClickHandler;
-import cs3500.threetrios.view.ThreeTriosFrameView;
 
-public class ControllerAdapter extends ThreeTriosPlayerController implements IController, ViewClickHandler, CardClickHandler, CellClickHandler {
+/**
+ * Adapter class that allows a ThreeTriosPlayerController to be conformed to the IController
+ * interface.
+ */
+public class ControllerAdapter extends ThreeTriosPlayerController
+        implements IController, ViewClickHandler, CardClickHandler, CellClickHandler {
   ViewAdapter viewAdapter;
   boolean listenerAdded = false;
 
@@ -51,7 +50,7 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void switchPlayer(IPlayer player) {
-
+    // not needed
   }
 
   @Override
@@ -81,7 +80,7 @@ public class ControllerAdapter extends ThreeTriosPlayerController implements ICo
 
   @Override
   public void displayEndMessage(String message) {
-
+    // not needed
   }
 
   @Override

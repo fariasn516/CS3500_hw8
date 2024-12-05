@@ -2,7 +2,6 @@ package cs3500.threetrios.controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import cs3500.threetrios.model.Card;
 import cs3500.threetrios.model.CardFileParser;
 import cs3500.threetrios.model.Color;
@@ -12,7 +11,6 @@ import cs3500.threetrios.model.Model;
 import cs3500.threetrios.model.player.AIPlayer;
 import cs3500.threetrios.model.player.Player;
 import cs3500.threetrios.view.ThreeTriosFrameView;
-import cs3500.threetrios.view.ThreeTriosModelView;
 
 /**
  * Controller that takes in the user's clicks from the GUI and feeds the action to the model.

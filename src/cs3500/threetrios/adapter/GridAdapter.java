@@ -6,8 +6,8 @@ import cs3500.threetrios.provider.hw5.ICard;
 import cs3500.threetrios.provider.hw5.IGrid;
 
 /**
- * This class isn't that necessary, it's only necessary to call one of the methods in the c
- * controller adapter, so we have created a "skeleton class", but nothing in it is actually used
+ * This class isn't that necessary. It's only necessary to call one of the methods in the
+ * controller adapter. We have created a "skeleton class", but nothing in it is actually used.
  */
 public class GridAdapter implements IGrid {
   int row;
@@ -23,7 +23,8 @@ public class GridAdapter implements IGrid {
   }
 
   @Override
-  public boolean placeCard(ICard card, int x, int y) throws IllegalArgumentException, IllegalStateException {
+  public boolean placeCard(ICard card, int x, int y)
+          throws IllegalArgumentException, IllegalStateException {
     return false;
   }
 

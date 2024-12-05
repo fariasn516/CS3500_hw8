@@ -16,11 +16,11 @@ public class TextView {
   /**
    * Constructor of the class taking a model.
    */
- // public TextView(ThreeTriosModel model) {
-    //if (model == null) {
-      //throw new IllegalArgumentException("Model cannot be null");
-    //}
-    //this.model = model;
+  // public TextView(ThreeTriosModel model) {
+  // if (model == null) {
+  // throw new IllegalArgumentException("Model cannot be null");
+  // }
+  // this.model = model;
   //}
 
   @Override

@@ -50,6 +50,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     repaint();
   }
 
+  @Override
   public void addCellClickHandler(CellClickHandler handler) {
     this.addMouseListener(new java.awt.event.MouseAdapter() {
       @Override
