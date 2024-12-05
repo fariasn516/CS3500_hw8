@@ -1,30 +1,25 @@
 package cs3500.threetrios.adapter;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import cs3500.threetrios.model.Card;
-import cs3500.threetrios.model.Cell;
-import cs3500.threetrios.model.GameGrid;
-import cs3500.threetrios.provider.hw5.Direction;
 import cs3500.threetrios.provider.hw5.ICard;
 import cs3500.threetrios.provider.hw5.IGrid;
 
 /**
- *
+ * This class isn't that necessary, it's only necessary to call one of the methods in the c
+ * controller adapter, so we have created a "skeleton class", but nothing in it is actually used
  */
 public class GridAdapter implements IGrid {
   int row;
   int col;
 
   public GridAdapter() {
+    // no need to actually do anything
   }
 
   @Override
   public void initialize(int[][] configuration) throws IllegalArgumentException {
-
+    // no need to actually implement
   }
 
   @Override
@@ -70,15 +65,6 @@ public class GridAdapter implements IGrid {
   @Override
   public ICard[][] getBoardState() {
     return new CardAdapter[0][];
-  }
-
-  private ICard createICard(Card card) {
-    Map<Direction, Integer> values = new HashMap<>();
-    values.put(Direction.NORTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.NORTH));
-    values.put(Direction.SOUTH, card.getValueFromDirection(cs3500.threetrios.model.Direction.SOUTH));
-    values.put(Direction.EAST, card.getValueFromDirection(cs3500.threetrios.model.Direction.EAST));
-    values.put(Direction.WEST, card.getValueFromDirection(cs3500.threetrios.model.Direction.WEST));
-    return new CardAdapter(card.getName(), null, values);
   }
 
   @Override

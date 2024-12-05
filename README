@@ -127,3 +127,7 @@ Changes Made in Part 3:
         -PlayerController (interface):
             -Defines the structure for controllers managing individual players.
             -Allows the controller to handle player input (human or AI) and execute actions in the model.
+
+Changes made in Part 4:
+    Things we were able to get working:
+    Things we were not able to get working:

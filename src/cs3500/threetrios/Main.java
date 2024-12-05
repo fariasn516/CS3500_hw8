@@ -1,7 +1,5 @@
 package cs3500.threetrios;
 
-import javax.naming.ldap.Control;
-
 import cs3500.threetrios.adapter.AIPlayerAdapter;
 import cs3500.threetrios.adapter.ControllerAdapter;
 import cs3500.threetrios.adapter.GridAdapter;
@@ -11,14 +9,8 @@ import cs3500.threetrios.adapter.ViewAdapter;
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.controller.ThreeTriosPlayerController;
 import cs3500.threetrios.model.Color;
-import cs3500.threetrios.model.Model;
-import cs3500.threetrios.model.ReadOnlyModel;
-import cs3500.threetrios.model.ThreeTriosModel;
-import cs3500.threetrios.model.player.AIPlayer;
-import cs3500.threetrios.model.player.HumanPlayer;
 import cs3500.threetrios.model.player.Player;
 import cs3500.threetrios.provider.hw5.IGrid;
-import cs3500.threetrios.provider.hw5.ReadOnlyTriosModel;
 import cs3500.threetrios.strategy.CornerCardStrat;
 import cs3500.threetrios.strategy.MaxFlippedCardsStrat;
 import cs3500.threetrios.view.ThreeTriosFrameView;
